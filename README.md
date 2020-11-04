@@ -26,6 +26,10 @@ Configuration of variables
 
 3. can be set in [Dockerfile](https://github.com/xiaoxiao-24/shopify-daily-spark/blob/main/Dockerfile) and rebuild the image.
 
+Jar 
+----
+The jar file is accessible [here](https://s3.console.aws.amazon.com/s3/object/spark-jar/daily_shopify.jar?region=eu-north-1&tab=overview) or <s3://spark-jar/daily_shopify.jar>
+
 Build docker image
 ------------------
 Edit [Dockerfile](https://github.com/xiaoxiao-24/shopify-daily-spark/blob/main/Dockerfile) and build image:
