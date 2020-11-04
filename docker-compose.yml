@@ -1,7 +1,7 @@
 version: '3'
 services:
     shopify_daily: 
-        image: shopify_daily_spark3.0_hadoop3.2:v7
+        image: xiaoxiaorey/shopify_daily_spark3.0_hadoop3.2:v2.1
         environment: 
             - DATE_CONFIG=2019-04-07
             - AWS_ACCESS_KEY_ID=
