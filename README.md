@@ -1,5 +1,4 @@
 # shopify-daily-spark
-==========================
 
 Introduction
 ------------
