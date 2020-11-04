@@ -28,7 +28,7 @@ Configuration of variables
 
 Jar 
 ----
-The jar file is accessible [here](https://s3.console.aws.amazon.com/s3/object/spark-jar/daily_shopify.jar?region=eu-north-1&tab=overview) or <s3://spark-jar/daily_shopify.jar>
+The jar file is accessible [here](https://spark-jar.s3.eu-north-1.amazonaws.com/daily_shopify.jar) or <s3://spark-jar/daily_shopify.jar>
 
 Build docker image
 ------------------
