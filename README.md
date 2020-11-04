@@ -46,6 +46,6 @@ Edit [docker_compose.yml](https://github.com/xiaoxiao-24/shopify-daily-spark/blo
 
 Run with airflow
 ----------------
-Deploy the jar file in a docker image, set variables in dag and run with a dag file 
+Set variables in dag and run with a dag file 
 
 The docker image [shopify_daily spark pipeline](https://hub.docker.com/repository/docker/xiaoxiaorey/shopify_daily_spark3.0_hadoop3.2) is available on docker hub.
