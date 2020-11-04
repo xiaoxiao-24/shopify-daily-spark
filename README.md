@@ -1,20 +1,15 @@
 # shopify-daily-spark
 
 Introduction
-------------
+============
 This spark application is a data pipeline which extracts daily data from AWS S3 and load the result into a SQL instance. 
-
-It can be run with Docker. 
-
-The [source code](https://github.com/xiaoxiao-24/shopify-daily-spark/blob/main/src/main/scala/shopify/daily_shopify.scala) is written in Spark scala. 
-It gets the extraction date from the env viariable DATE_CONFIG.
 
 Variables 
 
 *  Credentials :
->> \- Set AWS S3 credentials and bucket 
+>> \- AWS S3 credentials and bucket 
 
->> \- Set PostgreSQL credentials and db,table info 
+>> \- PostgreSQL credentials and db,table info 
 
 * The extraction date via the env variable DATE_CONFIG.
 
@@ -26,30 +21,42 @@ Configuration of variables
 
 3. can be set in [Dockerfile](https://github.com/xiaoxiao-24/shopify-daily-spark/blob/main/Dockerfile) and rebuild the image.
 
-Jar 
-----
-The jar file is accessible [here](https://spark-jar.s3.eu-north-1.amazonaws.com/daily_shopify.jar) or <s3://spark-jar/daily_shopify.jar>
 
-Build docker image
+How to use
+============
+
+with spark-submit
+----
+Make a jar file from the source code and run with spark-submit:
+> ./bin/spark-submit \
+--packages org.apache.hadoop:hadoop-aws:3.2.0,org.postgresql:postgresql:9.4.1207,com.typesafe:config:1.2.0 \
+--conf spark.hadoop.fs.s3a.endpoint=s3.amazonaws.com \
+--conf spark.executor.extraJavaOptions=-Dcom.amazonaws.services.s3.enableV4=true \
+--conf spark.driver.extraJavaOptions=-Dcom.amazonaws.services.s3.enableV4=true \
+--class shopify.daily_shopify \
+/jar/daily_shopify.jar
+
+A [jar](https://spark-jar.s3.eu-north-1.amazonaws.com/daily_shopify.jar) file is accessible [here](https://spark-jar.s3.eu-north-1.amazonaws.com/daily_shopify.jar) on <s3://spark-jar/daily_shopify.jar>
+
+
+with Docker
 ------------------
-Edit [Dockerfile](https://github.com/xiaoxiao-24/shopify-daily-spark/blob/main/Dockerfile) and build image:
+1. Make a [Dockerfile](https://github.com/xiaoxiao-24/shopify-daily-spark/blob/main/Dockerfile):
+
+2. Build image:
 > $ docker build -t shopify_daily_spark3.0_hadoop3.2:v1 .
 >
-
-Run with docker
----------------
-Change the extraction date to the one you what and run:
-> $ docker run --rm -t -i --name 1sttry190401 shopify_daily_spark3.0_hadoop3.2:v1
+3. Run docker image:
+> $ docker run --rm -t -i --name 1sttry shopify_daily_spark3.0_hadoop3.2:v1
 >
-
-Run with docker-compose
------------------------
-Edit [docker_compose.yml](https://github.com/xiaoxiao-24/shopify-daily-spark/blob/main/docker-compose.yml) and run
+4. Edit [docker_compose.yml](https://github.com/xiaoxiao-24/shopify-daily-spark/blob/main/docker-compose.yml) and run
 > $ docker-compose up
 >
 
-Run with airflow
-----------------
-Set variables in dag and run with a dag file 
-
 The docker image [shopify_daily spark pipeline](https://hub.docker.com/repository/docker/xiaoxiaorey/shopify_daily_spark3.0_hadoop3.2) is available on docker hub.
+
+Schedule with airflow
+---------------------
+Use DockerOperator(or BashOperator).
+Example [dag](https://github.com/xiaoxiao-24/shopify-daily-spark/blob/main/test_dag_shopify_spark.py) here is using DockerOperator.
+
