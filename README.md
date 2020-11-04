@@ -4,9 +4,13 @@ Introduction
 ============
 This spark application is a data pipeline which extracts daily data from AWS S3 and load the result into a SQL instance. 
 
-Variables 
----------
 
+How to use
+============
+
+Config variables 
+---------
+Variables
 *  Credentials :
 >> \- AWS S3 credentials and bucket 
 
@@ -14,8 +18,7 @@ Variables
 
 * The extraction date via variable DATE_CONFIG.
 
-Configuration of variables
----------------------------
+Configuration in different ways
 
 1. can be configured in a config file [application.properties](https://github.com/xiaoxiao-24/shopify-daily-spark/blob/main/src/main/scala/shopify/application.properties.example):
 
@@ -23,11 +26,7 @@ Configuration of variables
 
 3. can be set in [Dockerfile](https://github.com/xiaoxiao-24/shopify-daily-spark/blob/main/Dockerfile) and rebuild the image.
 
-
-How to use
-============
-
-with spark-submit
+Run with spark-submit
 ----
 Make a jar file from the source code and run with spark-submit:
 > ./bin/spark-submit \
@@ -41,7 +40,7 @@ Make a jar file from the source code and run with spark-submit:
 A [jar](https://spark-jar.s3.eu-north-1.amazonaws.com/daily_shopify.jar) file is accessible [here](https://spark-jar.s3.eu-north-1.amazonaws.com/daily_shopify.jar) on <s3://spark-jar/daily_shopify.jar>
 
 
-with Docker
+Run with Docker
 ------------------
 1. Make a [Dockerfile](https://github.com/xiaoxiao-24/shopify-daily-spark/blob/main/Dockerfile):
 
