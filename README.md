@@ -5,6 +5,7 @@ Introduction
 This spark application is a data pipeline which extracts daily data from AWS S3 and load the result into a SQL instance. 
 
 Variables 
+---------
 
 *  Credentials :
 >> \- AWS S3 credentials and bucket 
@@ -14,6 +15,7 @@ Variables
 * The extraction date via variable DATE_CONFIG.
 
 Configuration of variables
+---------------------------
 
 1. can be configured in a config file [application.properties](https://github.com/xiaoxiao-24/shopify-daily-spark/blob/main/src/main/scala/shopify/application.properties.example):
 
