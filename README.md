@@ -11,7 +11,7 @@ Variables
 
 >> \- PostgreSQL credentials and db,table info 
 
-* The extraction date via the env variable DATE_CONFIG.
+* The extraction date via variable DATE_CONFIG.
 
 Configuration of variables
 
